@@ -1,6 +1,9 @@
+import { ReactElement } from 'react';
 import { GetStaticPaths } from 'next';
+import type { NextPageWithLayout } from '../_app';
 import { client } from '../../libs/client';
 import type { Blog } from '../../types/blog'
+import Layout from './../../layout/main';
 
 interface Props {
   blog: Blog;
@@ -13,7 +16,7 @@ interface Context {
   defaultLocale: any
 };
 
-export default function BlogId({ blog }: Props) {
+const BlogId = ({ blog }: Props) => {
   return (
     <main>
       <h1>{blog.title}</h1>
@@ -27,7 +30,12 @@ export default function BlogId({ blog }: Props) {
   );
 }
 
-// 静的生成のためのパスを指定します
+export default BlogId;
+
+BlogId.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await client.get({ endpoint: "blog" });
 
@@ -35,7 +43,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-// データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context: Context) => {
   const id = context.params.id;
   const data = await client.get({ endpoint: "blog", contentId: id });
