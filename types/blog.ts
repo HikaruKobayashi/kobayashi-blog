@@ -8,7 +8,7 @@ export type Blog = {
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
-}
+};
 
 export type Tag = {
   id: string;

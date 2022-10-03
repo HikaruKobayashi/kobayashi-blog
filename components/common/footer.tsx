@@ -1,17 +1,23 @@
-import { Box, Text } from '@chakra-ui/react';
+import { css } from "@emotion/react";
 
 const Footer = () => {
   return (
-    <Box
-      as="footer"
-      width="100%"
-      textAlign="center"
-      py="6"
-      px={{base: '4', md: '8'}}
-    >
-      <Text>&copy;&nbsp;{new Date().getFullYear()}&nbsp;Kobayashi. All rights reserved.</Text>
-    </Box>
+    <footer css={styles.footer}>
+      <p>
+        &copy;&nbsp;{new Date().getFullYear()}&nbsp;Kobayashi. All rights
+        reserved.
+      </p>
+    </footer>
   );
+};
+
+const styles = {
+  footer: css`
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding: 12px 0;
+  `,
 };
 
 export default Footer;

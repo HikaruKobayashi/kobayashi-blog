@@ -1,20 +1,19 @@
-import { ReactElement } from 'react';
-import { GetStaticPaths } from 'next';
-import type { NextPageWithLayout } from '../_app';
-import { client } from '../../libs/client';
-import type { Blog } from '../../types/blog'
-import Layout from './../../layout/main';
+import { ReactElement } from "react";
+import { GetStaticPaths } from "next";
+import { client } from "../../libs/client";
+import type { Blog } from "../../types/blog";
+import Layout from "./../../layout/main";
 
 interface Props {
   blog: Blog;
-};
+}
 
 interface Context {
-  params: { id: string },
-  locales: any,
-  locale: any,
-  defaultLocale: any
-};
+  params: { id: string };
+  locales: any;
+  locale: any;
+  defaultLocale: any;
+}
 
 const BlogId = ({ blog }: Props) => {
   return (
@@ -28,7 +27,7 @@ const BlogId = ({ blog }: Props) => {
       />
     </main>
   );
-}
+};
 
 export default BlogId;
 
