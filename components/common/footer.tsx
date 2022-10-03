@@ -16,7 +16,9 @@ const styles = {
     width: 100%;
     height: auto;
     text-align: center;
-    padding: 12px 0;
+    padding: 16px 0;
+    color: #555;
+    border-top: 1px solid #ddd;
   `,
 };
 
