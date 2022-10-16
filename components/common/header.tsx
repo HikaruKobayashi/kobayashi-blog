@@ -10,20 +10,26 @@ const Header = () => {
         <a css={styles.link}>Kobayashi Blog</a>
       </Link>
       <div css={styles.container}>
-        <Link href="/">
-          <a css={styles.icon}>
-            <IconContext.Provider value={{ size: "24px", color: "#555" }}>
-              <AiFillGithub />
-            </IconContext.Provider>
-          </a>
-        </Link>
-        <Link href="/">
-          <a css={styles.icon}>
-            <IconContext.Provider value={{ size: "24px", color: "#555" }}>
-              <AiFillTwitterCircle />
-            </IconContext.Provider>
-          </a>
-        </Link>
+        <a
+          href="https://github.com/HikaruKobayashi/kobayashi-blog"
+          css={styles.icon}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconContext.Provider value={{ size: "24px", color: "#555" }}>
+            <AiFillGithub />
+          </IconContext.Provider>
+        </a>
+        <a
+          href="https://twitter.com/0719kobayashi"
+          css={styles.icon}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <IconContext.Provider value={{ size: "24px", color: "#555" }}>
+            <AiFillTwitterCircle />
+          </IconContext.Provider>
+        </a>
       </div>
     </header>
   );
@@ -33,7 +39,7 @@ const styles = {
   header: css`
     width: 100%;
     height: auto;
-    padding: 12px 6px;
+    padding: 12px;
     box-sizing: border-box;
     position: sticky;
     top: 0;
@@ -41,6 +47,7 @@ const styles = {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 999;
   `,
   container: css`
     display: flex;

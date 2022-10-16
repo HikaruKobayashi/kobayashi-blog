@@ -1,20 +1,24 @@
 import { ReactElement } from "react";
 import { css } from "@emotion/react";
-import { mqMax, mqMin } from "../styles/media-queries";
-import { client } from "../libs/client";
-import type { Blog, Tag } from "../types/blog";
-import Layout from "../layout/main";
-import Card from "../components/blog/card";
-import Pagination from "../components/common/pagination";
-import Sidebar from "../components/common/main-sidebar";
+import { mqMax, mqMin } from "./../../../styles/media-queries";
+import { client } from "./../../../libs/client";
+import type { Blog, Tag } from "./../../../types/blog";
+import Layout from "./../../../layout/main";
+import Card from "./../../../components/blog/card";
+import Pagination from "./../../../components/common/pagination";
+import Sidebar from "./../../../components/common/main-sidebar";
 
-const Home = ({
+const PER_PAGE = 8;
+
+const PageIndex = ({
   blogs,
   totalCount,
+  currentPage,
   tags,
 }: {
   blogs: Blog[];
   totalCount: number;
+  currentPage: number;
   tags: Tag[];
 }) => {
   return (
@@ -27,7 +31,7 @@ const Home = ({
             </li>
           ))}
         </ul>
-        <Pagination totalCount={totalCount} currentPage={1} />
+        <Pagination totalCount={totalCount} currentPage={currentPage} />
       </div>
       <Sidebar tags={tags} />
     </main>
@@ -73,16 +77,32 @@ const styles = {
   `,
 };
 
-export default Home;
+export default PageIndex;
 
-Home.getLayout = function getLayout(page: ReactElement) {
+PageIndex.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
-export const getStaticProps = async () => {
+export const getStaticPaths = async () => {
+  const repos = await client.get({ endpoint: "blog" });
+  const pageNumber = [];
+
+  const range = (start: number, end: number) =>
+    [...Array(end - start + 1)].map((_, i) => start + i);
+
+  const paths = range(1, Math.ceil(repos.totalCount / PER_PAGE)).map(
+    (repo) => `/blog/page/${repo}`
+  );
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async (context: any) => {
+  const id = context.params.id;
+
   const blog = await client.get({
     endpoint: "blog",
-    queries: { limit: 8, offset: 0 },
+    queries: { offset: (id - 1) * 8, limit: 8 },
   });
 
   const tag = await client.get({
@@ -93,6 +113,7 @@ export const getStaticProps = async () => {
     props: {
       blogs: blog.contents,
       totalCount: blog.totalCount,
+      currentPage: id,
       tags: tag.contents,
     },
   };

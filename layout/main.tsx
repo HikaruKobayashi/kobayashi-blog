@@ -3,7 +3,6 @@ import { css } from "@emotion/react";
 import { mqMin } from "../styles/media-queries";
 import Header from "./../components/common/header";
 import Footer from "./../components/common/footer";
-import Sidebar from "./../components/common/sidebar";
 
 type Props = {
   children: ReactNode;
@@ -14,10 +13,7 @@ const Main = ({ children, ...props }: Props) => {
     <main css={styles.main}>
       <div css={styles.container} {...props}>
         <Header />
-        <div css={styles.wrapper}>
-          <div css={styles.contents}>{children}</div>
-          <Sidebar />
-        </div>
+        <div css={styles.wrapper}>{children}</div>
         <Footer />
       </div>
     </main>
@@ -42,16 +38,11 @@ const styles = {
     flex: 1;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 10px;
     ${mqMin("md")} {
-      width: 90%;
+      width: 65%;
       margin: 0 auto;
       padding: 0;
-      display: flex;
     }
-  `,
-  contents: css`
-    flex: 1;
   `,
 };
 
