@@ -49,6 +49,7 @@ const styles = {
     }
   `,
   wrapper: css`
+    flex: 1;
     ${mqMin("md")} {
       min-width: 380px;
       padding-right: 20px;
