@@ -127,6 +127,7 @@ const styles = {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
+    word-wrap: break-word;
   `,
   moreText: css`
     font-size: 12px;
