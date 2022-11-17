@@ -2,6 +2,7 @@ export type Blog = {
   id: string;
   body: string;
   title: string;
+  summary: string;
   tags: Tag[];
   image: { url: string };
   createdAt: string;

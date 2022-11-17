@@ -43,12 +43,7 @@ const Card = (props: Props) => {
               <p css={[styles.text, styles.day]}>{createdAt}</p>
             </div>
             <h2 css={[styles.text, styles.title]}>{props.blog.title}</h2>
-            <div
-              css={[styles.text, styles.bodyText]}
-              dangerouslySetInnerHTML={{
-                __html: `${props.blog.body}`,
-              }}
-            />
+            <div css={[styles.text, styles.bodyText]}>{props.blog.summary}</div>
           </div>
           <div css={styles.readWrapper}>
             <p css={[styles.text, styles.moreText]}>More reading...</p>
