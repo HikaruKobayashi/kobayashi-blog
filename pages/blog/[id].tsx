@@ -53,12 +53,14 @@ const BlogId = ({ blog }: Props) => {
               <p css={styles.day}>{createdAt}</p>
             </div>
           </div>
-          <div
-            css={styles.content}
-            dangerouslySetInnerHTML={{
-              __html: `${blog.body}`,
-            }}
-          />
+          <div css={styles.content}>
+            <div
+              css={styles.content}
+              dangerouslySetInnerHTML={{
+                __html: `${blog.body}`,
+              }}
+            />
+          </div>
         </div>
       </section>
       <Sidebar toc={toc} tags={blog.tags} />
@@ -92,7 +94,7 @@ const styles = {
   `,
   title: css`
     font-size: 30px;
-    color: #555;
+    color: #333;
     font-weight: 600;
     margin-top: 12px;
     word-wrap: break-word;
@@ -127,8 +129,35 @@ const styles = {
     color: #555;
   `,
   content: css`
+    margin-bottom: 20px;
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 600;
+      color: #333;
+    }
+    div,
     p {
+      color: #555;
       word-wrap: break-word;
+    }
+    a {
+      color: #333;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    h2 {
+      font-size: 18px;
+    }
+    li {
+      list-style-position: inside;
+    }
+    blockquote {
+      border-left: 2px solid #555;
+      padding-left: 10px;
+      font-style: italic;
     }
     img {
       max-width: 100%;
