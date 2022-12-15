@@ -33,27 +33,27 @@ const Pagination = ({
     <ul css={styles.container}>
       <li css={styles.wrapper}>
         <Link href={`/blog/page/${prevPage}`}>
-          <a css={styles.paginationItem}>
+          <div css={styles.paginationItem}>
             <IconContext.Provider value={{ size: "12px", color: "#333" }}>
               <AiOutlineLeft />
             </IconContext.Provider>
-          </a>
+          </div>
         </Link>
       </li>
       {range(1, maxPage).map((number, index) => (
         <li css={styles.wrapper} key={index}>
           <Link href={`/blog/page/${number}`}>
-            <a css={styles.paginationItem}>{number}</a>
+            <p css={styles.paginationItem}>{number}</p>
           </Link>
         </li>
       ))}
       <li css={styles.wrapper}>
         <Link href={`/blog/page/${NextPage}`}>
-          <a css={styles.paginationItem}>
+          <div css={styles.paginationItem}>
             <IconContext.Provider value={{ size: "12px", color: "#333" }}>
               <AiOutlineRight />
             </IconContext.Provider>
-          </a>
+          </div>
         </Link>
       </li>
     </ul>

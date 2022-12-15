@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 const TagItem = (props: { name: string }) => {
   return (
     <Link href="/">
-      <a css={styles.tag}>{props.name}</a>
+      <p css={styles.tag}>{props.name}</p>
     </Link>
   );
 };

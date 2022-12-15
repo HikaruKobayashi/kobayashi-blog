@@ -23,14 +23,14 @@ const Card = (props: Props) => {
     .format("YYYY-MM-DD");
   return (
     <Link href={`/blog/${props.blog.id}`}>
-      <a css={styles.container}>
+      <div css={styles.container}>
         <div css={styles.wrapper}>
           <div css={styles.imgContainer}>
             <Image
               css={styles.thumbnail}
               src={props.blog.image.url}
               alt=""
-              layout="fill"
+              fill
             />
           </div>
           <div css={styles.contentWrapper}>
@@ -49,7 +49,7 @@ const Card = (props: Props) => {
             <p css={[styles.text, styles.moreText]}>More reading...</p>
           </div>
         </div>
-      </a>
+      </div>
     </Link>
   );
 };

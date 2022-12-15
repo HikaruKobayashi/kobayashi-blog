@@ -39,7 +39,7 @@ const BlogId = ({ blog }: Props) => {
     <main css={styles.main}>
       <section css={styles.container}>
         <div css={styles.imgContainer}>
-          <Image css={styles.kv} src={blog.image.url} alt="" layout="fill" />
+          <Image css={styles.kv} src={blog.image.url} alt="" fill />
         </div>
         <div css={styles.wrapper}>
           <div css={styles.titleContainer}>

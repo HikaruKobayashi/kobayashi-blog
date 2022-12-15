@@ -19,7 +19,7 @@ const Sidebar = (props: { toc: Props[]; tags: Tag[] }) => {
             {props.toc.map((head: Props, index: number) => (
               <li css={styles.headingItem} key={index}>
                 <Link href={`#${head.id}`}>
-                  <a css={styles.link}>{head.text}</a>
+                  <p css={styles.link}>{head.text}</p>
                 </Link>
               </li>
             ))}
