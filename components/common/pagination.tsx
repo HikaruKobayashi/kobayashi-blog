@@ -75,7 +75,6 @@ const styles = {
     }
   `,
   paginationItem: css`
-    text-decoration: none;
     font-size: 12px;
     color: #333;
     border-radius: 6px;

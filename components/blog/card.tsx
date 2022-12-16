@@ -60,7 +60,6 @@ const styles = {
     width: 100%;
     height: 100%;
     min-height: 230px;
-    text-decoration: none;
     cursor: pointer;
     ${mqMin("md")} {
       min-height: 330px;
