@@ -1,6 +1,9 @@
 import { ReactElement } from "react";
 import { GetStaticPaths } from "next";
 import Image from "next/image";
+import cheerio from "cheerio";
+import hljs from "highlight.js";
+import "highlight.js/styles/github-dark-dimmed.css";
 import { css } from "@emotion/react";
 import { mqMin, mqMax } from "../../styles/media-queries";
 import dayjs from "dayjs";
@@ -16,6 +19,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 
 interface Props {
   blog: Blog;
+  highlightedBody: string;
 }
 
 interface Context {
@@ -28,7 +32,7 @@ interface Context {
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-const BlogId = ({ blog }: Props) => {
+const BlogId = ({ blog, highlightedBody }: Props) => {
   const toc = renderToc(blog.body);
 
   const createdAt = dayjs
@@ -57,7 +61,7 @@ const BlogId = ({ blog }: Props) => {
             <div
               css={styles.content}
               dangerouslySetInnerHTML={{
-                __html: `${blog.body}`,
+                __html: highlightedBody,
               }}
             />
           </div>
@@ -89,7 +93,7 @@ const styles = {
   `,
   titleContainer: css`
     padding-bottom: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-bottom: 1px solid #ddd;
   `,
   title: css`
@@ -129,7 +133,6 @@ const styles = {
     color: #555;
   `,
   content: css`
-    margin-bottom: 20px;
     h1,
     h2,
     h3,
@@ -141,6 +144,16 @@ const styles = {
     p {
       color: #555;
       word-wrap: break-word;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    ul,
+    blockquote,
+    pre {
+      margin-bottom: 10px;
     }
     a {
       color: #333;
@@ -182,9 +195,17 @@ export const getStaticProps = async (context: Context) => {
   const id = context.params.id;
   const data = await client.get({ endpoint: "blog", contentId: id });
 
+  const $ = cheerio.load(data.body);
+  $("pre code").each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text());
+    $(elm).html(result.value);
+    $(elm).addClass("hljs");
+  });
+
   return {
     props: {
       blog: data,
+      highlightedBody: $.html(),
     },
   };
 };
