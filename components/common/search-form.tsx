@@ -55,6 +55,9 @@ const styles = {
     outline: none;
     border: none;
     flex-grow: 1;
+    font-size: 16px;
+    transform: scale(0.75);
+    transform-origin: left center;
   `,
 };
 
