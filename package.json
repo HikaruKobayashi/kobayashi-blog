@@ -13,6 +13,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@types/highlight.js": "^10.1.0",
+    "axios": "^1.2.1",
     "cheerio": "^1.0.0-rc.12",
     "dayjs": "^1.11.5",
     "framer-motion": "^6.5.1",
