@@ -12,7 +12,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-const PopcornFront = ({ Component, pageProps }: AppPropsWithLayout) => {
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
   return getLayout(
     <>
@@ -32,4 +32,4 @@ const PopcornFront = ({ Component, pageProps }: AppPropsWithLayout) => {
   );
 };
 
-export default PopcornFront;
+export default App;
