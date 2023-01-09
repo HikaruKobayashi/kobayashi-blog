@@ -15,7 +15,14 @@
     "jsx": "preserve",
     "incremental": true,
     "jsxImportSource": "@emotion/react",
-    "types": ["@emotion/react/types/css-prop"]
+    "types": ["@emotion/react/types/css-prop", "@types/jest"],
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/layout/*": ["layout/*"],
+      "@/libs/*": ["libs/*"],
+      "@/pages/*": ["pages/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
