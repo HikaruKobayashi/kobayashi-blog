@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { onlyPc } from "../../styles/util";
 import TagItem from "../blog/tag-item";
+import SearchForm from "./search-form";
 import type { Tag } from "../../types/blog";
 
 const MainSidebar = (props: { tags: Tag[] }) => {
@@ -8,6 +9,10 @@ const MainSidebar = (props: { tags: Tag[] }) => {
     <div>
       <div css={styles.sidebar}>
         <section css={styles.container}>
+          <p css={styles.title}>Search...</p>
+          <div css={styles.searchContainer}>
+            <SearchForm />
+          </div>
           <p css={styles.title}>All tags</p>
           <ul css={styles.tagContainer}>
             {props.tags.map((item, index) => (
@@ -55,6 +60,9 @@ const styles = {
     &:hover {
       opacity: 0.75;
     }
+  `,
+  searchContainer: css`
+    margin-bottom: 30px;
   `,
   tagContainer: css`
     display: flex;

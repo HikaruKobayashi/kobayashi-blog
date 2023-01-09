@@ -112,7 +112,8 @@ const styles = {
   kv: css`
     position: relative !important;
     width: 100% !important;
-    height: unset !important;
+    height: 300px !important;
+    object-fit: cover;
   `,
   wrapper: css`
     ${mqMax("md")} {
