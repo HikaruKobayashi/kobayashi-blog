@@ -60,10 +60,10 @@ const styles = {
     flex-wrap: wrap;
     justify-content: space-between;
     list-style: none;
+    gap: 40px 0;
   `,
   item: css`
     width: calc(50% - 5px);
-    margin-bottom: 40px;
     &:last-child,
     &:nth-last-of-type(2) {
       margin-bottom: 0;
